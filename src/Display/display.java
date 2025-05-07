@@ -13,16 +13,18 @@ public class display extends JPanel
     private JPanel buttonPanel;
     private gather[][] tempGather;
     private JFrame frame;
-    private JButton button;
+    private JButton exitButton;
+    private JButton playButton;
+    private JButton stopButton;
 
-
-    //TODO:处理bug，并理解。按钮和网格并没有完整的显示
     public display()
     {
         //创建对象
         displayPanel = new JPanel();
-        buttonPanel = new JPanel();
-        button = new JButton("Exit");
+        buttonPanel = new JPanel(new FlowLayout());
+        exitButton = new JButton("Exit");
+        playButton = new JButton("Play");
+        stopButton = new JButton("Stop");
 
         //设置
         frame = new JFrame("Display");
@@ -33,18 +35,43 @@ public class display extends JPanel
         frame.add(buttonPanel,BorderLayout.NORTH);     //把按钮的面板添加到frame中
         this.setPreferredSize(new Dimension(800,800));
 
-        buttonPanel.add(button);
+        buttonPanel.add(playButton);
+        buttonPanel.add(exitButton);
+        buttonPanel.add(stopButton);
+
         //按钮点击事件
-        button.addActionListener(new ActionListener() {
+        //TODO:需要补充按钮点击事件
+        playButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        exitButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
 
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
         frame.add(this);
-        frame.add(button);
+        //frame.add(button);
         frame.pack();
+
         tempGather = new gather[50][50];
+    }
+
+    public void set()
+    {
+
     }
 
     //由data部分告诉display要画什么东西出来，保证了两个类不会有太多的联系
